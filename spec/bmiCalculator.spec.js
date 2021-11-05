@@ -18,6 +18,10 @@ describe('BMI Calculator', () => {
                 expect(results.value).toEqual(20.38);
             });
 
+            it('is expected to return BMI Classification "Normal Weight"', () => {
+                expect(results.classification).toEqual('Normal Weight');
+            });
+
         });
 
     });

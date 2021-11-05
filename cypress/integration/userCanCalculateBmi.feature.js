@@ -16,4 +16,19 @@ describe('User can calculate BMI from index page', () => {
 
     });
 
+    describe('with wrong fields', () => {
+        
+        before(() => {
+            cy.visit('/');
+            cy.get('input[id=height]').type('dadsa');    
+            cy.get('input[id=weight]').type('67');
+            cy.get('button[id=calculate-bmi]').click();    
+        });
+
+        it('is expected to see an error message about incorrect height', () => {
+            cy.get('div[id=response-message]').should('contain.text', 'Please enter a valid height!');
+        });
+
+    });
+
 });

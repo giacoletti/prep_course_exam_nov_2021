@@ -7,6 +7,8 @@ const BMI = new BMICalculator();
 button.addEventListener('click', () => {
     if (heightInput.value === '') {
         messageElement.innerText = 'Enter a height, please!';
+    } else if ((!isNumber(heightInput.value)) || (heightInput.value <= 0)) {
+        messageElement.innerText = 'Please enter a valid height!';
     } else if (weightInput.value === '') {
         messageElement.innerText = 'Enter a weight, please!';
     } else {
@@ -14,3 +16,7 @@ button.addEventListener('click', () => {
         messageElement.innerText = `BMI: ${bmiResult.value} - ${bmiResult.classification}`;
     }
 });
+
+function isNumber(n) {
+    return !isNaN(parseFloat(n)) && !isNaN(n - 0);
+}
